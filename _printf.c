@@ -70,7 +70,7 @@ int identify(char ch, va_list args)
 		{"c", print_char},
 		{"s", print_str},
 		{"d", print_int},
-		{"i", print_dec},
+		{"i", print_int},
 		{NULL, NULL}
 		};
 
