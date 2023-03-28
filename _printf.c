@@ -72,7 +72,7 @@ int identify(char ch, va_list args)
 		{"d", print_int},
 		{"i", print_int},
 		{"b", print_b},
-		{"u", print_unsig},
+		{"u", print_unsigned},
 		{"x", print_x},
 		{"X", print_X},
 		{"R", print_rot},

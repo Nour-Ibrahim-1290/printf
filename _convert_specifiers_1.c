@@ -3,7 +3,6 @@
 int print_int(va_list);
 void to_binary(unsigned int, int*);
 int print_b(va_list);
-int print_unsig(va_list);
 int print_x(va_list x);
 int print_X(va_list X);
 
@@ -86,48 +85,6 @@ int print_b(va_list args)
 	p_len = &len;
 	to_binary(n, p_len);
 	return (len);
-}
-
-/**
- *print_unsig - function that prints unsigned num
- *@u: unsigned number
- *Description: prints unigned number with putchar
- *Return: size the output
- */
-
-int print_unsig(va_list u)
-{
-	unsigned int len, po, j, digit, n, num;
-	int count = 0;
-
-	n = va_arg(u, unsigned int);
-	if (n != 0)
-	{
-		num = n;
-		len = 0;
-		while (num != 0)
-		{
-			num /= 10;
-			len++;
-		}
-		po = 1;
-		for (j = 1; j <= len - 1; j++)
-			po *= 10;
-		for (j = 1; j <= len; j++)
-		{
-			digit = n / po;
-			_putchar(digit + '0');
-			count++;
-			n -= digit * po;
-			po /= 10;
-		}
-	}
-	else
-	{
-		_putchar('0');
-		return (1);
-	}
-	return (count);
 }
 
 /**
