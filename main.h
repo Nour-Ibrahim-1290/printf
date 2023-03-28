@@ -22,5 +22,8 @@ int _putchar(char);
 int print_int(va_list);
 void to_binary(unsigned int, int*);
 int print_b(va_list);
+int print_unsig(va_list);
+int print_X(va_list);
+int print_x(va_list);
 
 #endif
