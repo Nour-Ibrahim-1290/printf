@@ -20,5 +20,7 @@ int print_str(va_list);
 int _strlen(char *);
 int _putchar(char);
 int print_int(va_list);
+void to_binary(unsigned int, int*);
+int print_b(va_list);
 
 #endif

@@ -71,6 +71,7 @@ int identify(char ch, va_list args)
 		{"s", print_str},
 		{"d", print_int},
 		{"i", print_int},
+		{"b", print_b},
 		{NULL, NULL}
 		};
 

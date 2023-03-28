@@ -1,5 +1,9 @@
 #include "main.h"
 
+int print_int(va_list);
+void to_binary(unsigned int, int*);
+int print_b(va_list);
+
 /**
  *print_int - function that print an integer
  *@args: va_list of variables
@@ -47,4 +51,36 @@ int print_int(va_list args)
 		return (1);
 	}
 	return (count);
+}
+
+/**
+ * to_binary - convert unsigned int into binary and print it
+ * @n: unsigned int to convert into binary
+ * @len: pointer to counter for printing length
+ * Return: void.
+ */
+void to_binary(unsigned int n, int *len)
+{
+	if (n > 1)
+	{
+		*len += 1;
+		to_binary(n >> 1, len);
+	}
+	_putchar((n & 1) + '0');
+}
+
+/**
+ * print_b - print unsigned int in binary format
+ * @args: va_list to get arg from
+ * Return: length of printed binary
+ */
+int print_b(va_list args)
+{
+	unsigned int n = va_arg(args, unsigned int);
+	int len;
+	int *p_len;
+
+	p_len = &len;
+	to_binary(n, p_len);
+	return (len);
 }
