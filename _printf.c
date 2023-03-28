@@ -75,6 +75,7 @@ int identify(char ch, va_list args)
 		{"u", print_unsig},
 		{"x", print_x},
 		{"X", print_X},
+		{"R", print_rot},
 		{NULL, NULL}
 		};
 
