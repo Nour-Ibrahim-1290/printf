@@ -28,7 +28,7 @@ int print_str(va_list args)
 	char *str = va_arg(args, char *);
 
 	if (str == NULL)
-		str = "";
+		return (-1);
 	if (*str == '\0')
 		return (-1);
 
