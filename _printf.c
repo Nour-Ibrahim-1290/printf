@@ -15,7 +15,7 @@ int identify(char, va_list);
 
 int _printf(const char *format, ...)
 {
-	int i = 0, len = 0, print_flag = 0;
+	int i = 0, len = 0, print_flag = 0, flag = 0;
 	va_list args;
 
 	if (format == NULL)
@@ -34,6 +34,7 @@ int _printf(const char *format, ...)
 		{
 			len += _putchar('%');
 			i++;
+			flag = 1;
 			continue;
 		}
 		if (format[i + 1] == '\0')
@@ -45,7 +46,7 @@ int _printf(const char *format, ...)
 			i++;
 		if (print_flag > 0)
 			len += print_flag;
-		if (print_flag == 0)
+		if (print_flag == 0 && flag == 0)
 		{
 			_putchar('%');
 			len++;
