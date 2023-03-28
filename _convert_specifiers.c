@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
 
@@ -15,10 +14,7 @@ int _putchar(char);
  */
 int print_char(va_list args)
 {
-	char ch = va_arg(args, int);
-
-	write(1, &ch, 1);
-	return (1);
+	return (_putchar(va_arg(args, int)));
 }
 
 /**
@@ -28,14 +24,19 @@ int print_char(va_list args)
  */
 int print_str(va_list args)
 {
-	int len;
+	int len = 0;
 	char *str = va_arg(args, char *);
 
-	if (str == NULL || *str == '\0')
+	if (str == NULL)
+		str = "(nil)";
+	if (*str == '\0')
 		return (-1);
 
-	len = _strlen(str);
-	write(1, str, len);
+	while (str[len])
+	{
+		_putchar(str[len]);
+		len++;
+	}
 	return (len);
 }
 
