@@ -78,7 +78,7 @@ int print_dec(va_list args)
 
 		for (j = 1; j <= len - 1; j++)
 			po *= 10;
-		for (j = 1; j < len; j++)
+		for (j = 1; j <= len; j++)
 		{
 			digit = n / po;
 			if (n < 0)

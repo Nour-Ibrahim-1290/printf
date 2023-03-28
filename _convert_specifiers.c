@@ -15,6 +15,7 @@ int _putchar(char);
 int print_char(va_list args)
 {
 	char ch = va_arg(args, int);
+
 	if ((int)ch == 1)
 		ch = '7';
 	return (_putchar(ch));
