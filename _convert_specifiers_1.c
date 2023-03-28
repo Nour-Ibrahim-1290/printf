@@ -2,7 +2,7 @@
 
 int print_int(va_list);
 void to_binary(unsigned int, int*);
-int print_b(va_list);
+int print_ui_b(va_list);
 int print_x(va_list x);
 int print_X(va_list X);
 
@@ -76,14 +76,13 @@ void to_binary(unsigned int n, int *len)
  * @args: va_list to get arg from
  * Return: length of printed binary
  */
-int print_b(va_list args)
+int print_ui_b(va_list args)
 {
 	unsigned int n = va_arg(args, unsigned int);
 	int len;
-	int *p_len;
 
-	p_len = &len;
-	to_binary(n, p_len);
+	to_binary(n, &len);
+
 	return (len);
 }
 

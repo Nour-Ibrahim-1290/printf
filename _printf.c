@@ -4,6 +4,7 @@
 #include "main.h"
 
 int identify(char, va_list);
+int _printf(const char *format, ...);
 
 /**
  * _printf - recreating printf
@@ -71,7 +72,7 @@ int identify(char ch, va_list args)
 		{"s", print_str},
 		{"d", print_int},
 		{"i", print_int},
-		{"b", print_b},
+		{"b", print_ui_b},
 		{"u", print_unsigned},
 		{"x", print_x},
 		{"X", print_X},

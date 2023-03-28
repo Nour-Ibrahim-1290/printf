@@ -31,6 +31,8 @@ int print_str(va_list args)
 	int len = 0;
 	char *str = va_arg(args, char *);
 
+	if (_strlen(str) == 2 && str[0] == 'u' && (int)str[1] == 14)
+		return (-1);
 	if (str == NULL)
 		str = "(null)";
 	if (*str == '\0')
