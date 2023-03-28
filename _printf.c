@@ -66,15 +66,16 @@ int identify(char ch, va_list args)
 {
 	int i;
 	d_type data_type[] = {
-		{'c', print_char},
-		{'s', print_str},
-		{'d', print_int},
-		{'i', print_dec}
+		{"c", print_char},
+		{"s", print_str},
+		{"d", print_int},
+		{"i", print_dec},
+		{NULL, NULL}
 		};
 
-	for (i = 0; i < 4; i++)
+	for (i = 0; data_type[i].sp != NULL; i++)
 	{
-		if (data_type[i].sp == ch)
+		if (data_type[i].sp[0] == ch)
 			return (data_type[i].f(args));
 	}
 	return (0);

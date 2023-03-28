@@ -10,7 +10,7 @@
  */
 typedef struct d_type
 {
-	char sp;
+	char *sp;
 	int (*f)(va_list);
 } d_type;
 
