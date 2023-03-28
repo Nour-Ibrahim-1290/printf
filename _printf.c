@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include "main.h"
 
+int identify(char, va_list);
+
 /**
  * _printf - recreating printf
  *
@@ -13,8 +15,56 @@
 
 int _printf(const char *format, ...)
 {
-	int i = 0, j = 0, len = 0, tmp = 0;
+	int i = 0, len = 0, print_flag = 0;
 	va_list args;
+
+	if (format == NULL)
+		return (-1);
+
+	va_start(args, format);
+	while (format[i] != '\0')
+	{
+		if (format[i] != '%')
+		{
+			len += _putchar(format[i]);
+			i++;
+			continue;
+		}
+		if (format[i + 1] == '%')
+		{
+			len += _putchar('%');
+			i++;
+			continue;
+		}
+		if (format[i + 1] == '\0')
+			return (-1);
+
+		print_flag = identify(format[i + 1], args);
+
+		if (print_flag == -1 || print_flag != 0)
+			i++;
+		if (print_flag > 0)
+			len += print_flag;
+		if (print_flag == 0)
+		{
+			_putchar('%');
+			len++;
+		}
+		i++;
+	}
+	va_end(args);
+	return (len);
+}
+
+/**
+ * identify - identify the specifier used after %
+ * @ch: char of specifier
+ * @args: va_list of variables
+ * Return: int / len
+ */
+int identify(char ch, va_list args)
+{
+	int i;
 	d_type data_type[] = {
 		{'c', print_char},
 		{'s', print_str},
@@ -22,32 +72,10 @@ int _printf(const char *format, ...)
 		{'i', print_dec}
 		};
 
-	if (format == NULL)
-		return (-1);
-	va_start(args, format);
-	while (format[i] != '\0')
+	for (i = 0; i < 4; i++)
 	{
-		if (format[i] != '%')
-			len += _putchar(format[i]);
-		else
-		{
-			i++;
-			j = 0;
-			while (j < 4 && format[i] != data_type[j].sp)
-				j++;
-			if (j < 4)
-			{
-				tmp = data_type[j].f(args);
-				if (tmp == -1)
-					len++;
-				else
-					len += tmp;
-			}
-			else
-				_putchar('%');
-		}
-		i++;
+		if (data_type[i].sp == ch)
+			return (data_type[i].f(args));
 	}
-	va_end(args);
-	return (len);
+	return (0);
 }
