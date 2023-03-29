@@ -23,12 +23,11 @@ int _printf(const char *format, ...)
 		return (-1);
 
 	va_start(args, format);
-	while (format[i] != '\0')
+	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
 		{
 			len += _putchar(format[i]);
-			i++;
 			continue;
 		}
 		if (format[i + 1] == '%')
@@ -39,7 +38,7 @@ int _printf(const char *format, ...)
 			continue;
 		}
 
-	       	if (format[i + 1] == '\0')
+		if (format[i + 1] == '\0')
 			return (len);
 
 		print_flag = identify(format[i + 1], args);
@@ -53,7 +52,6 @@ int _printf(const char *format, ...)
 			_putchar('%');
 			len++;
 		}
-		i++;
 	}
 	va_end(args);
 	return (len);
