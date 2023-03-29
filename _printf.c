@@ -38,8 +38,13 @@ int _printf(const char *format, ...)
 			flag = 1;
 			continue;
 		}
-		if (format[i + 1] == '\0')
-			return (-1);
+		/*
+		* if (format[i + 1] == '\0')
+		* {
+		*	printf("Inside that!!!");
+		*	return (-1);
+		* }
+		*/
 
 		print_flag = identify(format[i + 1], args);
 

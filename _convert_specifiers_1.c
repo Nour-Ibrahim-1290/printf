@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stddef.h>
 
 int print_int(va_list);
 void to_binary(unsigned int, int*);
@@ -53,37 +54,6 @@ int print_int(va_list args)
 		return (1);
 	}
 	return (count);
-}
-
-/**
- * to_binary - convert unsigned int into binary and print it
- * @n: unsigned int to convert into binary
- * @len: pointer to counter for printing length
- * Return: void.
- */
-void to_binary(unsigned int n, int *len)
-{
-	if (n > 1)
-	{
-		*len += 1;
-		to_binary(n >> 1, len);
-	}
-	_putchar((n & 1) + '0');
-}
-
-/**
- * print_b - print unsigned int in binary format
- * @args: va_list to get arg from
- * Return: length of printed binary
- */
-int print_ui_b(va_list args)
-{
-	unsigned int n = va_arg(args, unsigned int);
-	int len;
-
-	to_binary(n, &len);
-
-	return (len);
 }
 
 /**
