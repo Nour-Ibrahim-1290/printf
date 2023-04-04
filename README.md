@@ -31,9 +31,9 @@ c
 Copy code
 int main()
 {
-    int a = 10, b = 20;
-    my_printf("a = %d, b = %d\n", a, b);
-    return 0;
+     va_start(arg, format);
+    done = vfprintf(stdout, format, arg);
+    va_end(arg);
 }
 When we run the above code, it will output a = 10, b = 20 to the console.
 
