@@ -27,13 +27,6 @@ Step 3: Test custom printf function
 We can now test our custom printf function by calling it with a format string and arguments. Here's an example:
 
 
-int main()
-{
-     va_start(arg, format);
-    done = vfprintf(stdout, format, arg);
-    va_end(arg);
-}
-When we run the above code, it will output a = 10, b = 20 to the console.
-
 Conclusion
+=====
 In this guide, we have learned how to implement a custom printf function in C language. You can use this implementation to create your own custom formatting functions.
